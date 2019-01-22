@@ -30,7 +30,7 @@ for r in res:
 
 	df.append(dict(Task=r[1],Start=start,Finish=fin,Resource=r[4], text=r[1]))
 	print df[len(df)-1]
-        task_names.append(r[5] + " Status: " + r[6] + " Duration:" + str(fin - start))
+        task_names.append("<b>Job:</b>" + r[5] + "<br><b>Status:</b> " + r[6] + "<br><b>Duration:</B>" + str(fin - start))
 
 
 colors = {
