@@ -3,7 +3,7 @@ import plotly.figure_factory as ff
 import MySQLdb
 import datetime
 
-db = MySQLdb.connect("10.10.20.28","bacula","pazzword","bacula" )
+db = MySQLdb.connect("localhost","bacula","pazzword","bacula" )
 
 cursor = db.cursor()
 
