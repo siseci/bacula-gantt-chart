@@ -7,7 +7,7 @@ db = MySQLdb.connect("10.10.20.28","bacula","pazzword","bacula" )
 
 cursor = db.cursor()
 
-cursor.execute("select Client.Name, Job.Name, StartTime, EndTime, Status.JobStatusLong, Job.Job, Job.Level from Job left join Status on Job.JobStatus=Status.JobStatus left join Client on Job.ClientId=Client.ClientId order by JobId desc limit 100")
+cursor.execute("select Client.Name, Job.Name, StartTime, EndTime, Status.JobStatusLong, Job.Job, Job.Level, FileSet.FileSet from Job left join Status on Job.JobStatus=Status.JobStatus left join Client on Job.ClientId=Client.ClientId left join FileSet on Job.FileSetId = FileSet.FileSetId order by JobId desc limit 100")
 
 res=cursor.fetchall()
 
@@ -30,7 +30,7 @@ for r in res:
 
 	df.append(dict(Task=r[1],Start=start,Finish=fin,Resource=r[4], text=r[1]))
 	print df[len(df)-1]
-        task_names.append("<b>Job:</b>" + r[5] + "<br><b>Status:</b> " + r[6] + "<br><b>Duration:</B>" + str(fin - start))
+        task_names.append("<b>Job:</b>" + r[5] + "<br><b>FileSet:</b>:" + r[7] + "<br><b>Status:</b> " + r[6] + "<br><b>Duration:</B>" + str(fin - start))
 
 
 colors = {
